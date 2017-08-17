@@ -30,8 +30,10 @@ class Person(object):
             else:
                 self.angle -= math.fmod(phi*2*math.pi, 2*math.pi)
 
-        self.curPos[0] += d*math.cos(self.angle)
-        self.curPos[1] += d*math.sin(self.angle)
+        newPos = np.array([0.0,0.0,self.curPos[2]])
+        newPos[0] = self.curPos[0] + d*math.cos(self.angle)
+        newPos[1] = self.curPos[1] + d*math.sin(self.angle)
+        return newPos
 
 def simulatePeopleTest():
     p1TrajX = []
